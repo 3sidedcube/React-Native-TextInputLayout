@@ -55,6 +55,13 @@ export default class TextInputLayout extends Component {
         }
     }
 
+    checkValid() {
+        if (this.props.checkValid) {
+            let isError = !this.props.checkValid(this._edtText);
+            if (this.state.isError !== isError) this.setState({isError});
+        }
+    }
+
     _springValue (animatedValue, toValue) {
         Animated.spring(animatedValue, {
             toValue: toValue,
