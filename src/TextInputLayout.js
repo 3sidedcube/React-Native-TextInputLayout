@@ -13,6 +13,7 @@ const DEFAULT_LABEL_ERROR_COLOR = '#C5270E';
 export default class TextInputLayout extends Component {
     static propTypes = {
         ...View.propTypes,
+        animatePlaceholder: React.PropTypes.bool,
         hintColor: React.PropTypes.string,
         errorColor: React.PropTypes.string,
         focusColor: React.PropTypes.string,
@@ -21,6 +22,7 @@ export default class TextInputLayout extends Component {
         checkValid: React.PropTypes.func
     };
     static defaultProps = {
+        animatePlaceholder: true,
         hintColor: DEFAULT_PLACEHOLDER_COLOR,
         errorColor: DEFAULT_LABEL_ERROR_COLOR,
         focusColor: DEFAULT_LABEL_COLOR,
@@ -63,10 +65,14 @@ export default class TextInputLayout extends Component {
     }
 
     _springValue (animatedValue, toValue) {
-        Animated.spring(animatedValue, {
-            toValue: toValue,
-            friction: 10
-        }).start();
+        if (this.props.animatePlaceholder) {
+            Animated.spring(animatedValue, {
+                toValue: toValue,
+                friction: 10
+            }).start();
+        } else {
+            animatedValue.setValue(toValue);
+        }
     }
 
     /**
@@ -156,7 +162,8 @@ export default class TextInputLayout extends Component {
             }, this.props.style]}
             >
                 <Animated.Text
-                    style={[this._labelStyle, {color: color}]} >
+                    style={[this._labelStyle, {color: color, opacity: this.props.animatePlaceholder || !isFocused ? 1 : 0}]} 
+                >
                     {this.props.labelText || this._oriEdtChild.props.placeholder }
                 </Animated.Text>
                 {this._edtChild}
