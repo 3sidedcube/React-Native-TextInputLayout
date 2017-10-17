@@ -6,6 +6,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Animated, Platform } from 'react-native';
 
+import PropTypes from "prop-types";
+
 const DEFAULT_PLACEHOLDER_COLOR = '#C7C7CD';
 const DEFAULT_LABEL_COLOR = '#414Db1';
 const DEFAULT_LABEL_ERROR_COLOR = '#C5270E';
@@ -13,12 +15,12 @@ const DEFAULT_LABEL_ERROR_COLOR = '#C5270E';
 export default class TextInputLayout extends Component {
     static propTypes = {
         ...View.propTypes,
-        hintColor: React.PropTypes.string,
-        errorColor: React.PropTypes.string,
-        focusColor: React.PropTypes.string,
-        labelFontSize: React.PropTypes.number,
-        labelText: React.PropTypes.string,
-        checkValid: React.PropTypes.func
+        hintColor: PropTypes.string,
+        errorColor: PropTypes.string,
+        focusColor: PropTypes.string,
+        labelFontSize: PropTypes.number,
+        labelText: PropTypes.string,
+        checkValid: PropTypes.func
     };
     static defaultProps = {
         hintColor: DEFAULT_PLACEHOLDER_COLOR,
