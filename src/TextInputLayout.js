@@ -4,7 +4,7 @@
 
 'use strict';
 import React, { Component } from 'react';
-import { StyleSheet, View, Animated, Platform } from 'react-native';
+import { StyleSheet, View, Animated, Platform, ViewPropTypes } from 'react-native';
 
 import PropTypes from "prop-types";
 
@@ -14,7 +14,7 @@ const DEFAULT_LABEL_ERROR_COLOR = '#C5270E';
 
 export default class TextInputLayout extends Component {
     static propTypes = {
-        ...View.propTypes,
+        ...ViewPropTypes,
         hintColor: PropTypes.string,
         errorColor: PropTypes.string,
         focusColor: PropTypes.string,
