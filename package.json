@@ -25,5 +25,10 @@
   "bugs": {
     "url": "https://github.com/zbtang/React-Native-TextInputLayout/issues"
   },
-  "homepage": "https://github.com/zbtang/React-Native-TextInputLayout#readme"
+  "homepage": "https://github.com/zbtang/React-Native-TextInputLayout#readme",
+  "peerDependencies": {
+    "react": ">=15.4.0 || ^16.0.0-alpha",
+    "react-native": ">=0.40",
+    "prop-types": "^15.5.10"
+  }
 }
